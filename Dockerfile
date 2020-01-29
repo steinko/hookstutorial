@@ -1,6 +1,8 @@
 FROM mhart/alpine-node:13.7.0 AS builder
 WORKDIR /app
-COPY . .
+COPY ./frontend/public .
+COPY ./frontend .
+COPY ./frontend/src .
 RUN npm install
 RUN npm run build
 
