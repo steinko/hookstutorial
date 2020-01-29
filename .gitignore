@@ -1,16 +1,17 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+/frontend/node_modules
+/functionalsystemtest/selenium/node_modules
+
+
 
 # testing
-/coverage
-
+/frontend/coverage
+/functionalsystemtest/selenium/coverage
 # production
-/build
-
+/frontend/build
+/functionalsystemtest/selenium/build
 # misc
 .DS_Store
 .env.local
@@ -21,3 +22,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/functionalsystemtest/selenium/package-lock.json
+frontend/package-lock.json
+.project
