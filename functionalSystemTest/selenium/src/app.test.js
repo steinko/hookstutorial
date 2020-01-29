@@ -19,10 +19,16 @@ it('should count when clicking', async () => {
 	 
 })
 
-xit('should enter value', async () => {
+it('should enter value', async () => {
    let input = await driver.findElement(By.tagName('input'))
-   expect(input.getAttribute('value')).toBe('')
-   input.sendKeys('Cool')
-   expect(input.getAttribute('value')).toBe('Cool')
+   expect(await input.getAttribute('value')).toBe('')
+   await input.sendKeys('Cool')
+   expect(await input.getAttribute('value')).toBe('Cool')
 
 })
+
+it('should display hello!', async () => {
+   await driver.findElement(By.id('toggleButton')).click()
+   expect(await driver.findElement(By.tagName('h2')).getText()).toBe('Hello!')
+})
+
