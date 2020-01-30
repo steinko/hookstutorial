@@ -45,6 +45,10 @@ jobs:
 
     - name: Initialize Google Cloud SDK
       uses: mathrix-education/setup-gcloud@master
+      with:
+        service_account_email: $GKE_EMAIL
+        service_account_key: $GCP_SA_KEY
+        project_id: $GCP_SA_KEY
        
     
     - name: Publish app to Google App Engine
