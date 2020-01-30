@@ -34,38 +34,21 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v2
-
-    # Setup gcloud CLI
-    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-      with:
-        version: '270.0.0'
-        service_account_email: ${{ secrets.GKE_EMAIL }}
-        service_account_key: ${{ secrets.GKE_KEY }}
-
-    # Configure docker to use the gcloud command-line tool as a credential helper
-    - run: |
-        # Set up docker to authenticate
-        # via gcloud command-line tool.
-        gcloud auth configure-docker
-      
+  
     # Build the Docker image
     - name: Build
       run: |        
-        docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
+        docker build -f frontend/Dockerfile -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" .
 
-    # Push the Docker image to Google Container Registry
-    - name: Publish
+    - name: Initialize Google Cloud SDK
+      uses: zxyle/publish-gae-action@master
+       
+    
+    - name: Publish app to Google App Engine
       run: |
-        docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:$GITHUB_SHA
-        
-    # Set up kustomize
-    - name: Set up Kustomize
-      run: |
-        curl -o kustomize --location https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
-        chmod u+x ./kustomize
-
-    # Deploy the Docker image to the GKE cluster
-    - name: Deploy
-      run: gcloud app deploy
+        # This client-secret.json is converted by GCP_SA_KEY.
+         gcloud auth activate-service-account $GKE_EMAIL --key-file=gcloud.json
+         gcloud config set project $GKE_PROJECT
+         gcloud -q app deploy frontend/app.yaml --promote
