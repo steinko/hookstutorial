@@ -19,6 +19,7 @@ on:
 env:
   GKE_PROJECT: ${{ secrets.GKE_PROJECT }}
   GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
+  GCP_SA_KEY: ${{ secrets.GKE_KEY }}
   GITHUB_SHA: ${{ github.sha }}
   GKE_ZONE: europe-west
   GKE_CLUSTER: example-gke-cluster
