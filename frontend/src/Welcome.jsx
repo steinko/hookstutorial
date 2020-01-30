@@ -7,9 +7,9 @@ class Welcome extends Component {
 	super()	
     this.logger = Logger.getLogger()
    }
-async render () {
+render () {
     const { text, toggle } = this.props;
-    await  this.logger.info({toggle} )
+    //this.logger.info({toggle} )
     return (
       <h1 className="App-title">{text}</h1>
     )
