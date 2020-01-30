@@ -43,7 +43,7 @@ jobs:
           --build-arg GITHUB_REF="$GITHUB_REF" .
 
     - name: Initialize Google Cloud SDK
-      uses: zxyle/publish-gae-action@master
+      uses: mathrix-education/setup-gcloud@master
        
     
     - name: Publish app to Google App Engine
