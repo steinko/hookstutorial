@@ -19,11 +19,9 @@ it('should enter value ', () => {
 	   expect(whatTodo.value).toBe('Cool Dish')
 	})
 	
-it('should send value and clear filed ', () => {
-	    global.fetch = require('jest-fetch-mock')
-         fetch.resetMocks()
-         fetch.mockResponseOnce(201 )
-	   
+it('should send value and clear filed ', async () => {
+	 global.fetch = require('jest-fetch-mock')
+      fetch.resetMocks()
 	   render(<Dish />)
 	   const whatTodo = screen.getByTestId('dish')
 	   expect(whatTodo.value).toBe('')
@@ -33,5 +31,6 @@ it('should send value and clear filed ', () => {
 	   const button = screen.getByText('Submit')
 	   fireEvent.click(button)
 	   expect(whatTodo.value).toBe('')
-	   expect(fetch).toHaveBeenCalledWith("https://localhost:4598", {"body": {"value": "Cool Dish"}, "headers": {"Content-Type": "application/json"}, "method": "POST"})
-    })
+	   await  expect(fetch).toHaveBeenCalledWith("https://localhost:4598", {"body": {"value": "Cool Dish"}, "headers": {"Content-Type": "application/json"}, "method": "POST"})
+	   fetch.resetMocks()
+	})

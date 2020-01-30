@@ -5,5 +5,5 @@
 import '@testing-library/jest-dom/extend-expect';
 require('jest-fetch-mock').enableMocks()
 module.exports = {
-     "setupFilesAfterEnv": ["jest-extended"]
- }
+  automock: false
+};
