@@ -1,15 +1,16 @@
+"use strict"
 import React, { Component } from 'react';
-import Logger from './logger'
+//import Logger from './logger'
 class Welcome extends Component {
-  logger
+  //logger
 
   constructor() {
 	super()	
-    this.logger = Logger.getLogger()
+   // this.logger = Logger.getLogger()
    }
 render () {
     const { text, toggle } = this.props;
-    //this.logger.info({toggle} )
+   // this.logger.info({toggle} )
     return (
       <h1 className="App-title">{text}</h1>
     )

@@ -1,8 +1,12 @@
-import React , { useState } from 'react'
+import React , { useState, useEffect } from 'react'
 
 export default function Dish () {
 	
 const [name, setName] = useState('');
+
+  useEffect(() => {
+    document.title = name
+  })
 
   return (
     <div className="main-wrapper">

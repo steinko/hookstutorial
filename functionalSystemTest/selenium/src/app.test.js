@@ -30,6 +30,13 @@ it('should enter value', async () => {
 
 })
 
+it('should display title', async () => {
+   let input = await driver.findElement(By.tagName('input'))
+   await input.sendKeys('Cool')
+   expect(await driver.getTitle()).toBe('Cool')
+
+})
+
 it('should clear value', async () => {
    let input = await driver.findElement(By.tagName('input'))
    let value = await input.getAttribute('value')

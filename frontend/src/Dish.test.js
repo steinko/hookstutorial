@@ -1,7 +1,7 @@
 import React  from 'react';
 import { render, fireEvent, screen } from "@testing-library/react";
 import Dish from "./Dish"
-
+global.fetch = require('jest-fetch-mock')
 
 
 it('should exist', () => {
@@ -18,10 +18,12 @@ it('should enter value ', () => {
 	   })
 	   expect(whatTodo.value).toBe('Cool Dish')
 	})
+
+
 	
 it('should send value and clear filed ', async () => {
-	 global.fetch = require('jest-fetch-mock')
-      fetch.resetMocks()
+	 
+      await fetch.resetMocks()
 	   render(<Dish />)
 	   const whatTodo = screen.getByTestId('dish')
 	   expect(whatTodo.value).toBe('')
@@ -32,5 +34,5 @@ it('should send value and clear filed ', async () => {
 	   fireEvent.click(button)
 	   expect(whatTodo.value).toBe('')
 	   await  expect(fetch).toHaveBeenCalledWith("https://localhost:4598", {"body": {"value": "Cool Dish"}, "headers": {"Content-Type": "application/json"}, "method": "POST"})
-	   fetch.resetMocks()
+	   await fetch.resetMocks()
 	})
