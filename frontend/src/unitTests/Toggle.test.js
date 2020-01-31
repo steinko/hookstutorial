@@ -1,6 +1,6 @@
 import React  from 'react';
 import { render, screen, fireEvent} from "@testing-library/react";
-import Toggle from "./Toggle"
+import Toggle from "../components/Toggle"
 
 it('should exist', () => {
 	expect (render(<Toggle />))

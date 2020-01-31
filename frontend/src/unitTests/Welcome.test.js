@@ -1,7 +1,7 @@
 import React  from 'react';
 import { render } from "@testing-library/react";
-import Hide from "./Hide"
+import Welcome from "../components/Welcome"
 
 it('should exist', () => {
-	expect (render(< Hide />))
+	expect (render(<Welcome />))
 })

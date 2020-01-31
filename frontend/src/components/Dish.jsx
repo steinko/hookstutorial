@@ -1,4 +1,5 @@
 import React , { useState, useEffect } from 'react'
+import {useTitleInput} from '../hooks/useTitleInput'
 
 export default function Dish () {
 	
@@ -35,11 +36,3 @@ const formSubmit = (value, setValue) => {
      setValue('')
 }
 
-function useTitleInput (initialValue) {
-    const [value, setValue] = useState('');
-    useEffect(() => {
-    document.title = value
-  })
-  return [value,setValue]
-
- } 

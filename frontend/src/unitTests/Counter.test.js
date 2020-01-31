@@ -1,6 +1,6 @@
 import React  from 'react';
 import { render, fireEvent } from "@testing-library/react";
-import Counter from "./Counter"
+import Counter from "../components/Counter"
 
 it('should exist', () => {
 	expect (render(<Counter />))

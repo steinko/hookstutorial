@@ -1,6 +1,6 @@
 import React  from 'react';
 import { render, fireEvent, screen } from "@testing-library/react";
-import Dish from "./Dish"
+import Dish from "../components/Dish"
 global.fetch = require('jest-fetch-mock')
 
 
