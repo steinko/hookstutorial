@@ -2,11 +2,9 @@ import React , { useState, useEffect } from 'react'
 
 export default function Dish () {
 	
-const [name, setName] = useState('');
 
-  useEffect(() => {
-    document.title = name
-  })
+const [name, setName] = useTitleInput ('')
+  
 
   return (
     <div className="main-wrapper">
@@ -36,3 +34,12 @@ const formSubmit = (value, setValue) => {
      })
      setValue('')
 }
+
+function useTitleInput (initialValue) {
+    const [value, setValue] = useState('');
+    useEffect(() => {
+    document.title = value
+  })
+  return [value,setValue]
+
+ } 
